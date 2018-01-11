@@ -95,7 +95,8 @@ RUN apt-get install -y metasploit-framework websploit && \
     git clone --depth=1 https://github.com/leviathan-framework/leviathan /opt/leviathan && \
     git clone --depth=1 https://github.com/Ekultek/Pybelt /opt/Pybelt && \
     git clone --depth=1 https://github.com/nccgroup/redsnarf /opt/redsnarf && \
-    git clone --depth=1 https://github.com/FreelancePentester/ddos-script /opt/ddos-script
+    git clone --depth=1 https://github.com/FreelancePentester/ddos-script /opt/ddos-script && \
+    git clone --depth=1 https://github.com/Manisso/fsociety /opt/fsociety
 
 # MITM / ARP poisoning / Spoofing / Sniffing
 RUN apt-get install -y mitmproxy dsniff mitmf tcpdump ngrep
@@ -110,7 +111,7 @@ RUN git clone --depth=1 https://github.com/BishopFox/spoofcheck /opt/spoofcheck
 
 # Crack password
 # RUN git clone --depth=1 https://github.com/berzerk0/Probable-Wordlists /opt/Probable-Wordlists
-RUN apt-get install -y hydra john crunch cewl
+RUN apt-get install -y hydra john crunch cewl fcrackzip
 RUN git clone --depth=1 https://github.com/Mebus/cupp /opt/cupp && \
     git clone --depth=1 https://github.com/k4m4/dymerge.git /opt/dymerge && \
     git clone --depth=1 https://github.com/AlessandroZ/LaZagne /opt/LaZagne && \
@@ -152,7 +153,8 @@ RUN git clone --depth=1 https://github.com/k4m4/kickthemout /opt/kickthemout && 
 
 # NMAP NSE Script vulscan
 RUN curl -s http://www.computec.ch/projekte/vulscan/download/nmap_nse_vulscan-2.0.tar.gz | tar xzvf - -C /usr/share/nmap/scripts/ && \
-    wget -P /usr/share/nmap/scripts/ https://raw.githubusercontent.com/cldrn/nmap-nse-scripts/master/scripts/smb-vuln-ms17-010.nse
+    wget -P /usr/share/nmap/scripts/ https://raw.githubusercontent.com/cldrn/nmap-nse-scripts/master/scripts/smb-vuln-ms17-010.nse && \
+    wget -P /usr/share/nmap/scripts/ https://raw.githubusercontent.com/vulnersCom/nmap-vulners/master/vulners.nse
 
 # Wireless networks, WEP WPA
 RUN apt-get install -y wifite wifiphisher mdk3 tshark
@@ -233,12 +235,14 @@ RUN git clone --depth=1 https://github.com/droberson/ssh-honeypot /opt/ssh-honey
 
 # Reverse shell
 RUN apt-get install -y netcat
+RUN git clone --depth=1 https://github.com/mthbernardes/rsg /opt/rsg
 
 # Tunnel
 RUN git clone --depth=1 https://github.com/yarrick/iodine /opt/iodine
 
 # Detect WAF
-RUN git clone --depth=1 https://github.com/EnableSecurity/wafw00f /opt/wafw00f
+RUN git clone --depth=1 https://github.com/EnableSecurity/wafw00f /opt/wafw00f && \
+    git clone --depth=1 https://github.com/Ekultek/WhatWaf /opt/WhatWaf
 
 # Remove file metadata
 RUN apt-get install -y mat
@@ -256,6 +260,12 @@ RUN git clone --depth=1 https://github.com/joxeankoret/nightmare /opt/nightmare
 
 # Paquet manipulation
 RUN apt-get install -y hping3 scapy
+
+# C&C
+RUN git clone --depth=1 https://github.com/Ne0nd0g/merlin /opt/merlin
+
+# botnet
+RUN git clone --depth=1 https://github.com/sweetsoftware/Ares /opt/Ares
 
 #########
 # CLEAN #

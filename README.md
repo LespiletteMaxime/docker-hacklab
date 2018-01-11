@@ -1,7 +1,9 @@
 Docker Hacklab
 ===
 
-> My personal hacklab
+> My personal hacklab, create your own.
+
+French article: https://blog.ston3o.me/creer-hacklab-virtuel-docker/
 
 Quick Start
 ---
@@ -20,7 +22,7 @@ Alias
 
 ```bash
 # ~/.bashrc
-alias hacklab='docker run -d --name hacklab --net=host --privileged=true -v /tmp/:/mnt -it ston3o/docker-hacklab zsh > /dev/null 2>&1; docker start hacklab > /dev/null; docker exec -it hacklab zsh'
+alias hacklab='docker run -d --name hacklab --net=host --privileged=true -v /tmp/:/mnt -it ston3o/docker-hacklab bash > /dev/null 2>&1; docker start hacklab > /dev/null; docker exec -it -e COLUMNS=$COLUMNS -e LINES=$LINES -e TERM=$TERM hacklab zsh'
 ```
 
 Other useful docker commands
